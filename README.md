@@ -34,6 +34,7 @@ Scraping data from the Kendra Scott jewelry website involves using php tools to 
 - Kendra Scott web site :  https://www.kendrascott.com/jewelry/
 - You can check also the scrapping script in this repository : https://github.com/AlaouiMohamedDev/scrapping-data-shop.git
 
+### This page shows the data scrapped from the web site : Kendra Scott web site   https://www.kendrascott.com/jewelry/
 <img
   src="/images/scrapp.png"
   alt="Alt text"
