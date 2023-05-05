@@ -36,7 +36,7 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   src="/images/cart.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 200px">
+  style="display: inline-block; margin: 0 auto; width:100px; max-width: 200px">
 ## CHECKOUT PAGE
  <img
   src="/images/chekout.png"
@@ -45,7 +45,7 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   style="display: inline-block; margin: 0 auto; max-width: 200px">
 ## PAYMENT PAGE
  <img
-  src="/images/chekout.png"
+  src="/images/payment.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 200px">
