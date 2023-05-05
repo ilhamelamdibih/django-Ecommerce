@@ -9,13 +9,13 @@ The website allows users to browse various types of jewelry items, including nec
 Admin users can log in to the admin panel to manage products, orders, and users. The admin panel provides an interface to add, update, and delete products, view orders, and manage users.
 
 
-- Templates: templates for storing information about users, articles,orders and payments.
-- Views: Views to display home page, search pages,User profile, account management pages and payment pages.
-- Templates: Templates to display data in an attractive layout.
-- Authentication and authorization: an authentication system for public services.
-- Payment system: a payment system allowing users to payer for their online purchases.
-- Shopping cart: a shopping cart system to allow users to add items to their cart before checking out.
-- Web scraping: a web scraping script to retrieve information about it items for sale from other websites and importers in the database of website.
+- Templates : templates for storing information about users, articles,orders and payments.
+- Views : Views to display home page, search pages,User profile, account management pages and payment pages.
+- Templates : Templates to display data in an attractive layout.
+- Authentication and authorization  : an authentication system for public services.
+- Payment system  : a payment system allowing users to payer for their online purchases.
+- Shopping cart : a shopping cart system to allow users to add items to their cart before checking out.
+- Web scraping  : a web scraping script to retrieve information about it items for sale from other websites and importers in the database of website.
 
 ## Technologies Used
 - Django - Python web framework for building web applications
