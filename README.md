@@ -18,7 +18,7 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   src="/images/home_.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; width:300px; max-width: 200px">
+  style="display: inline-block; margin: 0 auto; width:700px; max-width: 200px">
 ## SHOP PAGE
  <img
   src="/images/product_.png"
