@@ -21,6 +21,7 @@ Admin users can log in to the admin panel to manage products, orders, and users.
 ## Scarpping Data
 Scraping data from the Kendra Scott jewelry website involves using php tools to extract information such as product names, descriptions, prices, and images from the website's pages.
 Kendra Scott web site :  https://www.kendrascott.com/jewelry/
+You can check also the scrapping script in this repository : https://github.com/AlaouiMohamedDev/scrapping-data-shop.git
 
 # Project Important Pages
 
