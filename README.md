@@ -26,12 +26,19 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   <img src="https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png" width="100" />
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/600px-Tailwind_CSS_Logo.svg.png?20211001194333" width="100" /> 
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="100" />
+  <img src="https://en.wikipedia.org/wiki/PHP#/media/File:PHP-logo.svg" width="100" />
 </p> 
 
 ## Scarpping Data
 Scraping data from the Kendra Scott jewelry website involves using php tools to extract information such as product names, descriptions, prices, and images from the website's pages.
 - Kendra Scott web site :  https://www.kendrascott.com/jewelry/
 - You can check also the scrapping script in this repository : https://github.com/AlaouiMohamedDev/scrapping-data-shop.git
+
+<img
+  src="/images/scrapp.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: flex;  margin: 0 auto; width:700px; max-width: 200px">
 
 # Project Important Pages
 
