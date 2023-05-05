@@ -8,66 +8,572 @@
     <title>
         {% block title %}{% trans "My shop" %}{% endblock %}
     </title>
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Lato&family=Oleo+Script&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .inputLog{
+                border: 1px solid rgba(128, 128, 128, 0.747);
+            }
+        .detailTable input[type="submit"]{
+            background-color:black;
+            color:white;
+        }
+        thead th{
+            background-color :white;
+            color:black;
+        }
+        tbody tr:nth-child(odd){
+            background-color :white;
+        }
+        .textA{
+            border: 1px solid rgba(128, 128, 128, 0.582);
+        }
+        .textA:focus{
+            border: 1px solid #cb8161;
+        }
+        .itemTop{
+            
+            border-bottom:1px solide gray;
+        }
+         input[type=range]::-webkit-slider-thumb {
+            background-color: #cb8161;
+        }
+        input[type=range]::-moz-range-thumb {
+            background-color: #cb8161;
+        }
+        input[type=range]::-ms-thumb {
+            background-color: #cb8161;
+        }
+        .cstshdw {
+            box-shadow: 0 1px 10px 5px #0000000d;
+        }
+        .select{
+            border:1px solid rgba(151, 151, 151, 0.685);
+            color:#EEEEEE;
+        }
+        .select :focus{
+            border:1px solide gray;
+        }
+
+        .carousel-indicators button {
+            background-color: black;
+            /* set the background color of inactive indicators */
+        }
+
+        .carousel-indicators button[aria-current="true"],
+        button:checked {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* add relative positioning to the button */
+        }
+
+        .carousel-indicators button[aria-current="true"]::before {
+            content: "";
+            /* add content to the pseudo-element */
+            position: absolute;
+            /* position the pseudo-element relative to the button */
+
+            /* move the pseudo-element to the left */
+            width: 20px;
+            /* set the width of the pseudo-element */
+            height: 20px;
+            /* set the height of the pseudo-element */
+            border: 1px solid black;
+            /* add a black border to the pseudo-element */
+            border-radius: 50%;
+            /* make the pseudo-element circular */
+            background-color: transparent;
+            /* set the background color of the pseudo-element */
+        }
+
+        .carousel-indicators button:not([aria-current="true"]):not(:checked) {
+            background-color: black;
+            /* apply inactive style*/
+        }
+
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1s;
+        }
+
+        .alert-animation {
+            animation-name: alert-animation;
+            animation-duration: 1s;
+        }
+
+        .zoom-in {
+            animation-name: zoom-in;
+            animation-duration: 1.5s;
+        }
+
+        .fade-left {
+            animation-name: fade-left;
+            animation-duration: 1.5s;
+        }
+
+        .fade-down {
+            animation-name: fade-down;
+            animation-duration: .7s;
+        }
+
+        .fade-up {
+            animation-name: fade-up;
+            animation-duration: .7s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes zoom-in {
+            from {
+                opacity: .4;
+                scale: 0
+            }
+
+            to {
+                opacity: 1;
+                scale: 1
+            }
+        }
+
+        @keyframes fade-left {
+            from {
+                right: -430px
+            }
+
+            to {
+                right: 0
+            }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: .4;
+                display: none;
+                bottom: 0px;
+            }
+
+            to {
+                opacity: 1;
+                display: grid;
+                bottom: 20px;
+            }
+        }
+
+        @keyframes fade-down {
+            from {
+                opacity: .4;
+                display: none;
+                top: 0px;
+            }
+
+            to {
+                opacity: 1;
+                display: flex;
+                top: 20px;
+            }
+        }
+
+        @keyframes alert-animation {
+            from {
+                right: -2.5rem;
+            }
+
+            to {
+                right: 1.25rem;
+            }
+        }
+
+        .animationPing{
+            animation: pingg 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .animationPing1{
+            animation: pingg 3.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+                @keyframes pingg {
+                    75%, 100% {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main': '#cb8161'
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'oleo': ['Oleo Script', 'cursive'],
+                        'sacra': ['Sacramento', 'cursive'],
+                        'cormorant': ['Cormorant Garamond', 'serif']
+                    },
+                    zIndex: {
+                        '100': '100',
+                        '90': '90',
+                        '90': '90'
+                    },
+                    backgroundImage:{
+                        'trending':'url("images/bg.webp")',
+                        'store':'url("images/bg1.webp")'
+                    }
+                }
+            },
+
+        }
+    </script>
 </head>
 
-<body>
-    <div id="header">
-        <a href="/" class="logo">{% trans "My shop" %}</a>
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        <!-- login -->
-        <ul class="menu">
-            {% if request.user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Sign out</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Sign in</a></li>
-            {% endif %}
-        </ul>
-        <!-- end login -->
-        <div class="languages">
-            <p>{% trans "Language" %}:</p>
-            <ul class="languages">
-                {% for language in languages %}
-                <li>
-                <a href="/{{ language.code }}/" 
-                {% if language.code == LANGUAGE_CODE %} class="selected" {% endif %}>
-                    {{ language.name_local }}
-                </a>
-                </li>
-                {% endfor %}
-            </ul>
+<body class="font-lato flex flex-col leading-relaxed	relative">
+       <!-- header -->
+       <header class="w-full flex flex-col">
+        <!-- Topbar -->
+        <div
+            class="bg-[#EEEEEE] text-[#868686] text-[13px] px-[20px] lg:px-[80px] justify-items-center gap-y-2 lg:gap-y-0 py-[11px] grid lg:grid-cols-3 font-normal">
+            <div class="flex items-center space-x-4 w-full justify-center lg:justify-start">
+                <div class="flex items-center space-x-2">
+                    <i class='bx bx-map'></i>
+                    <span>Store Location</span>
+                </div>
+                <span class="h-[12px] w-[1px] bg-[#868686]"></span>
+                <div class="flex items-center space-x-2">
+                    <i class='bx bx-envelope'></i>
+                    <span>support@Ilhame.com</span>
+                </div>
+            </div>
+            <div class="w-full flex items-center justify-center">
+                <span>Summer sale discount off 30%! </span>
+                <a href="#" class="text-[#cb8161]">Shop Now</a>
+            </div>
+            <div class="flex items-center space-x-4 w-full justify-center lg:justify-end">
+                <div class="flex items-center space-x-1">
+                    <span>MAD</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+                <span class="h-[12px] w-[1px] bg-[#868686]"></span>
+                <div class="flex items-center space-x-1">
+                    <span>English</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
         </div>
-        <li>
+        <!-- MiddleBar -->
+        <div class="grid grid-cols-3 py-[20px] px-[20px] lg:px-[80px] header bg-white fade">
+            <div class="w-full flex items-center space-x-3 md:space-x-0 justify-start text-xl md:text-2xl">
+                <i onclick="toggleSide()" class='bx bx-menu flex text-2xl md:hidden'></i>
+                <i class='bx bx-search'></i>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}">
+                    <i class='bx bx-door-open md:hidden flex'></i>
+                </a>
+                {% endif %}
+            </div>
+            <div class="w-full flex items-center justify-center text-3xl md:text-4xl font-black font-sacra">
+                <h1 class="font-sacra">Ilhmjury</h1>
+            </div>
+            <div class="flex items-center space-x-3 w-full justify-end text-xl md:text-2xl">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'shop:profile' %}" class="text-md font-[500] font-cormorant ">Hi, {{ request.user.username }}</a>
+                <a href="{% url 'logout' %}">
+                    <i class='bx bx-door-open hidden md:flex'></i>
+                </a>
+                {% else %}
+                <i onclick="toggleAuthModal()" class='bx bx-user leading hidden md:flex'></i>
+                {% endif %}
+                <div class="relative">
+                    <span
+                        class="absolute rounded-full text-white text-center top-[-5px] right-[-15px] text-[11px] leading-[20px] h-[20px] w-[20px] bg-[#cb8161] inline-block">0</span>
+                    <i class='bx bx-heart leading'></i>
+                </div>
+                {% with total_items=cart|length %}
+                <a href="{% url 'cart:cart_detail' %}" class="relative">
+                    <span
+                    class="absolute rounded-full text-white text-center top-[-5px] right-[-15px] text-[11px] leading-[20px] h-[20px] w-[20px] bg-[#cb8161] inline-block">{{total_items}}</span>
+                <i class='bx bx-shopping-bag leading'></i>
+                </a>
 
-    </div>
-    <div id="subheader">
-        <div class="cart">
-            {% with total_items=cart|length %}
-            {% if total_items > 0 %}
-            {% trans "Your cart" %}:
-            <a href="{% url 'cart:cart_detail' %}">
-                {% blocktrans with total=cart.get_total_price count items=total_items %}
-                {{ items }} item, ${{ total }}
-                {% plural %}
-                {{ items }} items, ${{ total }}
-                {% endblocktrans %}
+                {% endwith %}
 
-                <!-- {{ total_items }} item{{ total_items|pluralize }},
-                ${{ cart.get_total_price }}
-                -->
+            </div>
+
+        </div>
+        <!-- NavBar -->
+        <div
+            class="py-[19px] hidden space-x-5 md:flex items-center tracking-[2px] justify-center text-[12px] text-white bg-[#cb8161]">
+            <a  href="/shop/" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>HOME</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a href="/shop/products" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>SHOP</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a href="/shop/products" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>PRODUCT</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a href="/shop/productScrapped" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>SCRAPPED PRODUCTS</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a  class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>FEAUTURED</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+        </div>
+        <!-- SideBar -->
+        <div
+            class="md:hidden side opacity-0 invisible fixed top-0 bottom-0 left-0 z-100 w-full transition-opacity duration-400 ease delay-0">
+            <div class="absolute top-0 left-0 w-full h-full z-1 bg-[#0006]"></div>
+            <div
+                class=" bg-[#FBFBFB] z-2 absolute top-0 left-0 bottom-0 w-[320px] overflow-hidden pt-[65px] pb-[20px] px-[15px] transition-all duration-400 ease delay-0">
+                <div class="px-[15px] py-[20px] text-lg flex items-center justify-end absolute top-0 right-0">
+                    <i onclick="toggleSide()"
+                        class='bx bx-x bg-white  w-[35px] h-[35px] rounded-full flex items-center justify-center'></i>
+                </div>
+                <div class="flex flex-col w-full tracking-[3px]">
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">HOME</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">SHOP</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">BLOG</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">PRODUCT</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">FEAUTURED</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BottomBar -->
+        <div
+            class="fixed flex justify-between items-center text-[10px]  left-0 w-full bottom-0 bg-white cstshdw w-full lg:hidden z-90 py-[5px] px-[15px] h-[50px]">
+            <div class="flex flex-col items-center">
+                <i class='bx bx-home-alt text-[20px]'></i>
+                <span>Home</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class='bx bx-grid-alt text-[20px]'></i>
+                <span>SHOP</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class='bx bx-search text-[20px]'></i>
+                <span>SEARCH</span>
+            </div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'shop:profile' %}" class="flex flex-col items-center">
+                <i class='bx bx-user text-[20px]'></i>
+                <span>{{ request.user.username }}</span>
             </a>
             {% else %}
-            {% trans "Your cart is empty." %}
+            <div onclick="toggleAuthModal()" class="flex flex-col items-center">
+                <i class='bx bx-user text-[20px]'></i>
+                <span>ACCOUNT</span>
+               
+            </div>
             {% endif %}
-            {% endwith %}
+            <div class="flex flex-col items-center relative">
+                <span
+                    class="absolute rounded-full text-white text-center top-[-5px] right-[-2px] text-[11px] leading-[20px] h-[20px] w-[20px] bg-black inline-block">0</span>
+                <i class='bx bx-heart text-[20px]'></i>
+                <span>WISHLIST</span>
+            </div>
         </div>
-    </div>
-    <div id="content">
+
+        <div
+            class="grid md:grid-cols-3 space-y-5 md:space-y-0 md:space-x-10 text-[11px] py-3 px-5 md:px-[50px] lg:px[100px] 2xl:px-[200px]">
+            <div class="flex items-center space-x-4 justify-center">
+                <img src="/media/images/header/delivery-truck.png" class="h-[30px]" />
+                <p class="tracking-[4px]">FREE SHIPPING OVERS $60</p>
+            </div>
+            <div class="flex items-center space-x-4 justify-center">
+                <img src="/media/images/header/exchange.png" class="h-[20px]" />
+                <p class="tracking-[4px]">EASY EXCHANGES & RETURNS</p>
+            </div>
+            <div class="flex items-center space-x-4 justify-center">
+                <img src="/media/images/header/24-hours.png" class="h-[25px]" />
+                <p class="tracking-[4px]">24/7 FREE SUPPORT</p>
+            </div>
+        </div>
+       </header>
+
+    <div id="content py-10">
         {% block content %}
         {% endblock %}
     </div>
+
+     <!-- Login Modal -->
+     <div class="fixed z-100 w-full h-screen top-0 hidden items-center justify-center authmodal fade">
+        <div onclick="toggleAuthModal()" class="w-full h-screen bg-black/60 absolute z-10"></div>
+        <div class="z-20 w-full h-full md:h-auto md:w-[550px] bg-white items-center justify-center flex flex-col py-7 px-7">
+                <form action="{% url 'login' %}" method="post"  class="border py-7 px-7 space-y-4  items-center flex flex-col mt-5 relative w-full">
+                    <span class="absolute font-[600] -top-7 text-xl font-cormorant border-b border-main px-6 py-3 bg-white">
+                        Sign in
+                    </span>
+                    <input type="text" placeholder="Username*" id="id_username" name="username" class="mt-3 inputLog text-md text-gray-700 py-3 px-4 w-full" />
+                    <div class="flex items-center w-full relative" >
+                        <i class='bx bx-show-alt absolute text-lg text-gray-500 right-3 pl-3 border-l'></i>
+                        <input type="password" placeholder="Password*" name="password" id="id_password" class="inputLog text-md text-gray-700 py-3 px-4 w-full" />
+                    </div>
+                    {% csrf_token %}
+                     <input type="hidden" name="next" value="{{ next }}" />
+                    <span class="underline underline-offset-4">Lost your password</span>
+                    <button type="submit" class="hover:bg-black transition-all duration-30 w-full  py-4 bg-main text-xs text-white tracking-widest">
+                        SIGN IN
+                    </button>
+                    <a href="/clients/register/" class="group hover:text-black transition-all duration-300 w-full flex items-center justify-center py-4 bg-white border border-black text-xs text-main tracking-widest">
+                       <span class="group-hover:no-underline underline underline-offset-2">CREATE YOUR ACCOUNT</span>
+                    </a>
+                    {% if form.errors %}
+                    <p class="text-red-500 text-sm">Your username and password didn't match. Please try again.</p>
+                        {% else %}
+                    <p class="text-red-500 text-sm">Please, use the following form to log-in:</p>
+                    {% endif %}
+                </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="py-[50px] grid lg:grid-cols-3 px-5 lg:px-[200px]">
+        <div class="lg:hidden flex flex-col space-y-5 items-center justify-center border-b pb-[50px]">
+            <h1 class="text-3xl md:text-4xl font-black font-sacra">Ilhmjury</h1>
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-facebook text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-twitter text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-instagram-alt text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-gmail text-xl' ></i>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col items-center lg:items-start space-y-3 py-[50px] lg:py-5 border-b lg:border-0">
+            <p class="text-[16px] font-semibold font-cormorant tracking-widest">OUR NEWSLETTER</p>
+            <p class="text-[#868686] text-md">Sign up for the latest Ice offers and exclusives.</p>
+            <div class="flex items-center space-x-2">
+                <input type="email" class="outline-none border border-gray-500 focus:border-main py-3 px-4 text-sm text-[#868686]" placeholder="Your email" />
+                <button class="bg-black text-white px-5 h-full">
+                    <i class='bx bx-envelope text-xl' ></i>
+                </button>
+            </div>
+            <img src="/media/images/payments.png" class="w-[390px] pt-4"/>
+        </div>
+        <div class="hidden lg:flex flex-col space-y-5 items-center justify-center border-x-2 py-5">
+            <h1 class="text-3xl md:text-4xl font-black font-sacra">Ilhmjury</h1>
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-facebook text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-twitter text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-instagram-alt text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-gmail text-xl' ></i>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 justify-items-center  pt-[50px] lg:pt-0">
+            <div class="flex flex-col space-y-5">
+                <p class="text-[16px] font-semibold font-cormorant tracking-widest">CUSTOMER SERVICES</p>
+                <div class="flex flex-col space-y-1 text-[#868686] text-md">
+                    <a href="#">Contact Us</a>
+                    <a href="#">Track Your Order</a>
+                    <a href="#">Product Care & Repair</a>
+                    <a href="#">Book an Appointment</a>
+                    <a href="#">Frequently Asked Questions</a>
+                    <a href="#">Shipping & Returns</a>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-5">
+                <p class="text-[16px] font-semibold font-cormorant tracking-widest">ABOUT US</p>
+                <div class="flex flex-col space-y-1 text-[#868686] text-md">
+                    <a href="#">About Us
+                    </a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Our Producers</a>
+                    <a href="#">Sitemap</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright -->
+    <div class="py-5 flex items-center justify-center border-t-2 text-[#868686] mb-[50px] lg:mb-0">
+        <h1>Copyright © 2023 Ilhmjuri Jewellery</h1>
+    </div>
+    <script>
+        function toggleSide() {
+            const side = document.querySelector('.side')
+            side.classList.toggle('visible')
+            side.classList.toggle('invisible')
+            side.classList.toggle('opacity-0')
+            side.classList.toggle('opacity-100	')
+        }
+
+        const header = document.querySelector('.header')
+        window.addEventListener('scroll', () => {
+            if ((window.scrollY || window.pageYOffset) > 10) {
+                header.classList.add('fixed')
+                header.classList.add('z-100')
+                header.classList.add('shadow');
+                header.classList.add('top-0');
+                header.classList.add('w-full');
+            } else {
+                header.classList.remove('fixed')
+                header.classList.remove('z-100')
+                header.classList.remove('shadow');
+                header.classList.remove('top-0');
+                header.classList.remove('w-full');
+            }
+        })
+
+        function toggleAuthModal() {
+            const authmodal = document.querySelector('.authmodal')
+            authmodal.classList.toggle('hidden')
+            authmodal.classList.toggle('flex')
+        }
+    </script>
+    
 </body>
 
 </html>

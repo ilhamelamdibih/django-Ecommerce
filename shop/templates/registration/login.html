@@ -1,22 +1,21 @@
 {% extends "shop/base.html" %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
-<h1>Log-in</h1>
-<div class="module">
-    <br>
+<div class="module w-full flex flex-col items-center justify-center">
     {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-        {% else %}
-    <p>Please, use the following form to log-in:</p>
-    {% endif %}
-    <br>
-    <div class="login-form">
-        <form action="{% url 'login' %}" method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
-            <p><input type="submit" value="Log-in"></p>
-        </form>
+    <div class="w-max py-10 ">
+        <div class=" bg-[#f11e1e] flex items-center w-max space-x-10 rounded-lg py-5 px-7 shadow text-white">
+            <i class='bx bx-error-alt text-[80px]' ></i>
+            <div class="flex flex-col">
+                <p>Your username and password didn't match. Please try again.</p>
+           
+        <p>Please, use the following form to log-in:</p>
+       
+            <a onclick="toggleAuthModal()" class="underline underline-offset-2  text-sm">Login Again</a>
+            </div>
+        </div>
+
     </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -31,7 +31,10 @@ urlpatterns = i18n_patterns(
     path(_('orders/'), include('orders.urls', namespace='orders')),
     path(_('coupons/'), include('coupons.urls', namespace='coupons')),
     path('payment/', include('payment.urls', namespace='payment')),
+    path('shop/', include('shop.urls', namespace='shop')),
     path('', include('shop.urls', namespace='shop')),
+    path('accounts/profile/', include('shop.urls', namespace='shop')),
+
 )
 
 if settings.DEBUG:

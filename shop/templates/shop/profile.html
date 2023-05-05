@@ -1,0 +1,137 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}
+{{ request.user.username }} Profile
+{% endblock %}
+{% block content %}
+  <!-- Profile Section -->
+  <div class="flex flex-col items-center lg:items-start px-10 lg:px-[100px] 2xl:px-[280px] py-7 ">
+    <p class="text-[60px] font-cormorant">Your profile</p>
+    <div class="flex items-center  text-sm border-b pb-5">
+        <p class="text-gray-400">Home</p>
+        <i class='bx bx-chevron-right' ></i>
+        <p>Profile</p>
+    </div>
+    <div class="grid lg:grid-cols-6 lg:gap-x-[60px] 2xl:gap-x-[100px] py-5">
+        <div class="lg:col-span-2 flex flex-col   bg-white ">
+            <img src="/media/images/profile.webp" class="w-full h-[380px] object-cover" />
+            <div class="flex flex-col space-y-10 border-t py-4 mt-[60px] relative">
+                <span class="text-sm text-gray-400 font-[500] absolute bg-white pr-3 -top-3">Your addresses</span>
+                <div class="flex flex-col space-y-2 w-full">
+                    <div class="flex items-center justify-between">
+                        <p class="font-black text-2xl">
+                            Hay Bir Anzarane
+                        </p>
+                        <span class="font-[600] text-main py-2 px-4 bg-main/40 rounded">
+                            Primary
+                        </span>
+                    </div>
+                    <span class="text-gray-500 font-[500] text-sm pt-3">bloc 12 n°106, hay Bir Anzarane</span>
+                    <span class="text-gray-500 font-[500] text-sm">El Jadida, rue AlAtlass AlKabir,24010  Morocco</span>
+                </div>
+                <div class="flex flex-col space-y-2 w-full">
+                    <div class="flex items-center justify-between">
+                        <p class="font-black text-2xl">
+                            Grand Casablanca
+                        </p>
+                        <span class="font-[600] text-main py-2 px-4 bg-main/40 rounded">
+                            Secondary
+                        </span>
+                    </div>
+                    <span class="text-gray-500 font-[500] text-sm pt-3"> rue Ibn Ejaouzi, 1°et., Grand Casablanca</span>
+                    <span class="text-gray-500 font-[500] text-sm">rue Mohamed Kamal -ex Pilote Vidal, 20360  Casablanca</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col space-y-10 border-t py-3 mt-[60px] relative">
+                <span class="text-sm text-gray-400 font-[500] absolute bg-white pr-3 -top-3">Categories you like</span>
+                <div class="flex flex-col space-y-2 w-full">
+                    <p class="font-[900] text-lg">
+                        CHARMS
+                    </p>
+                    <p class="font-[900] text-lg">
+                        BRACELETS
+                    </p>
+                    <p class="font-[900] text-lg">
+                        EARRINGS
+                    </p>
+                    <p class="font-[900] text-lg">
+                        NECKLACES
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-span-4 flex flex-col space-y-9">
+            <div class="flex flex-col space-y-3">
+                <div class="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:items-end space-x-1 pt-10 lg:pt-0">
+                     <p class="text-4xl text-[#161F30] font-black">{{ request.user.username }}</p>
+                     <i class='hidden lg:flex bx bxs-map text-gray-400 text-2xl pl-3' ></i>
+                     <div class="flex items-center space-x-2 lg:space-x-0">
+                        <i class='lg:hidden flex bx bxs-map text-gray-400 text-2xl pl-3' ></i>
+                         <span class="text-gray-400 text-lg font-bold">Marrakech , Morrocco</span>
+                     </div>
+                     <p class="lg:hidden flex text-main font-bold text-xl tracking-wide">Super client</p>
+                </div>
+                <p class="hidden lg:flex text-main font-bold text-xl tracking-wide">Super client</p>
+            </div>
+            <div class="flex items-center lg:items-start flex-col space-y-1">
+                <p class="text-xs text-gray-400">RANKINGS</p>
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl text-[#161F30] font-bold"> 8,6 </span>
+                    <div class="flex items-center space-x-2 text-2xl">
+                        <i class='bx bxs-star text-main'></i>
+                        <i class='bx bxs-star text-main'></i>
+                        <i class='bx bxs-star text-main'></i>
+                        <i class='bx bxs-star text-main'></i>
+                        <i class='bx bxs-star text-gray-200' ></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex item-center">
+                <div class="py-2 pr-5 flex text-md lg:text-xl font-bold text-gray-700 items-center space-x-2">
+                    <i class='bx bxs-message-square' ></i>
+                    <p>Send message</p>
+                </div>
+                <div class="py-1 pl-4 pr-7 flex text-md lg:text-xl font-bold text-main bg-main/50 items-center ">
+                    <i class='bx bx-check text-3xl' ></i>
+                    <p>Contacts</p>
+                </div>
+                <div class="py-1 pl-7  flex text-md font-semibold text-gray-400  items-center ">
+                    <p>Report suser</p>
+                </div>
+            </div>
+            <div class="flex item-center space-x-5 border-b">
+                <div class="py-2  flex text-lg font-[600] text-gray-400 items-center space-x-2">
+                    <i class='bx bx-show-alt text-2xl' ></i>
+                    <p>Time Line</p>
+                </div>
+                <div class="py-2 px-3 flex text-lg font-[600] border-b-2 border-main text-[#161F30] items-center space-x-2">
+                    <i class='bx bxs-user' ></i>
+                    <p>About</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <p class="uppercase text-gray-400 text-sm">Contact  information</p>
+                <div class="grid gap-y-5 grid-cols-2 lg:grid-cols-5 pt-5 text-lg font-semibold text-[#161F30]">
+                    <p>Phone :</p> <p class="text-main">+212 5424687</p>
+                    <div class="hidden lg:flex col-span-3"></div>
+                    <p>Address :</p> <p class=" lg:col-span-2">rue Ibn Ejaouzi, 1°et., Grand Casablanca City:   Grand Casablanca</p>
+                    <div class="hidden lg:flex col-span-2"></div>
+                    <p>Email :</p> <p class="text-main">hello@ilhame.com</p>
+                    <div class="hidden lg:flex col-span-3"></div>
+                    <p>Site :</p> <p class="text-main">www.ilhame.com</p>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <p class="uppercase text-gray-400 text-sm">Contact  information</p>
+                <div class="grid gap-y-5 grid-cols-2 lg:grid-cols-6 pt-5 text-lg font-semibold text-[#161F30]">
+                    <p>Birthday :</p> <p class="text-main">June 5,1992</p>
+                    <div class="lg:col-span-4"></div>
+                    <p>Gender :</p> <p class="text-main">Female</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+{% endblock %}

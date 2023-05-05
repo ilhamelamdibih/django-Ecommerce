@@ -4,7 +4,132 @@
 Your shopping cart
 {% endblock %}
 {% block content %}
-<h1>Your shopping cart</h1>
+  <!-- Shopping Cart -->
+  <div class="py-7 flex space-y-5 flex-col items-center justify-center px-5 lg:px-[100px] 2xl:px-[300px]">
+    <p class="text-[40px]  font-cormorant">Shopping Cart</p>
+    <div class="h-[2.8px] w-[400px] bg-main rounded-lg relative">
+       <div class="h-[30px] w-[30px] text-main flex items-center justify-center absolute -top-[13px] right-0 rounded-full border border-main bg-white">
+            <i class='bx bxs-truck text-lg' ></i>
+       </div>
+    </div>
+    <p class="text-[14px] text-[#868686]">Congratulations , you've got free shipping!</p>
+
+    {% if lenCart == 0 %}
+    <div class="text-white bg-main py-5 w-full flex item-center justify-center">
+        No item in the shop for the momment ! <a href="{% url 'shop:product_list' %}" class="underline underline-offset-2">Go to The shop </a>
+    </div>
+    {% endif %}
+    {% if lenCart != 0 %}
+    <div class="flex flex-col w-full pt-7 detailTable">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <table class="min-w-full text-left text-sm font-light">
+                <thead class="border-b dark:border-neutral-500 headertable">
+                  <tr>
+                    <th scope="col" class="px-6 py-4 w-2/6">Product</th>
+                    <th scope="col" class="px-6 py-4 w-1/6 text-center">Quantity</th>
+                    <th scope="col" class="px-6 py-4 w-1/6 text-center">Price</th>
+                    <th scope="col" class="px-6 py-4 w-1/6 text-right">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                    {% with product=item.product %}
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap px-6 py-5 w-full  md:w-2/6 flex flex-col md:flex-row items-center space-x-0 md:space-x-5">
+                        <img src="{% if product.image %}
+                        {{ product.image.url}}
+                        {% else %}
+                        {% static ' img/no_image.png' %}{% endif %}" class=":w-[120px] h-[120px]" />
+                        <div class="flex flex-col space-y-2 items-center md:items-start">
+                            <span class="text-[15px] hover:text-main">{{ product.name }}</span>
+                            <span class="text-[14px]">{{ item.price }} dh</span>
+                        </div>
+                    </td>
+                    <td class="whitespace-nowrap text-[15px] px-6 py-5 w-1/6 ">
+                        <div class="flex flex-col items-center space-y-2">
+
+                            <form class="flex item-center space-x-1" action="{% url 'cart:cart_add' product.id %}" method="post">
+   
+                               
+                               <div class="flex items-center border py-3 px-2  w-max">
+                                   <i  class='bx bx-minus cursor-pointer hover:text-main pr-6' ></i>
+                                   <input name="quantity" id="id_quantity" type="number" class="border-0 flex items-center w-[30px] text-black p-0" min="0" value="{{ item.quantity }}"/>
+                                   <i class='bx bx-plus cursor-pointer hover:text-main pl-3' ></i>
+                               </div>
+                               {{ item.update_quantity_form.override }}
+                               <input type="submit" value="Update" class="text-white bg-black cursor-pointer py-2 px-3">
+                               {% csrf_token %}
+                           </form>
+                           <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                               <button type="submit" class="cursor-pointer text-[13px] underline underline-offset-2 text-gray-400 ">Remove</button>
+                               {% csrf_token %}
+                           </form>
+                        </div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-5 w-1/6 text-center">{{ item.price }} dh</td>
+                    <td class="whitespace-nowrap px-6 py-5 w-1/6 text-right">{{ item.total_price }} dh</td>
+                  </tr>
+                  {% endwith %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-2 pt-5 w-full">
+        <div class="flex flex-col">
+            <div class="flex items-center justify-between  pb-8">
+                <div class="flex items-center space-x-2">
+                    <img src="/media/images/gift.png" class="w-[30px] " />
+                    <p class="text-[15px]">Add gift wrap <span class="text-main">Only 100.00 dh</span></p>
+                </div>
+                <span class="border border-black py-2 px-6 cursor-pointer">Add A Gift Wrap</span>
+            </div>
+            <p>Special instructions for seller</p>
+            <textarea  placeholder="How can we help you?" class="h-[150px] mt-7 w-full border py-2 px-3 textA" ></textarea>
+            <p class="pt-7">Coupon</p>
+            <p class="text-gray-400 text-[14px]">* Discount will be calculated and applied at checkout</p>
+            <form class="flex flex-col" action="{% url 'coupons:apply' %}" method="post">
+                <input type="text" name="code" id="id_code" placeholder="Coupon code" class="border py-3 px-3 mt-3 textA" />
+                <button type="submit" class="bg-black text-white py-3 w-1/2 mt-5 hover:bg-main">
+                    Apply Coupon
+                </button>
+                {% csrf_token %}
+            </form>
+            
+        </div>
+        <div class="flex flex-col items-end text-right space-y-4">
+            <div class="flex flex-col space-y-1">
+                {% if cart.coupon %}
+                <p class="text-[#f11e1e]">- {{ cart.get_discount|floatformat:2 }} dh</p>
+                <p>Subtotal: {{  cart.get_total_price_after_discount|floatformat:2 }} dh</p>
+                <p class="text-green-400 text-[10px]">"{{ cart.coupon.code }}" coupon
+                    ({{ cart.coupon.discount }}% off)</p>
+                <p class="text-gray-500 text-[15px] italic">Taxes and shipping calculated at checkout</p>
+                {% else %}
+                <p>Subtotal: {{  cart.get_total_price_after_discount|floatformat:2 }} dh</p>
+                {% endif %}
+            </div>
+            <p class="text-gray-500 text-[15px] italic w-3/4">All charges are billed in <span class="text-black">USD</span>. While the content of your cart is currently displayed in <span class="text-black">MAD</span>, the checkout will use <span class="text-black">USD</span> at the most current exchange rate.</p>
+            <div class="flex items-center py-3 space-x-3 text-[15px]">
+                <input id="link-radio" type="radio" value="" class="w-4 h-4 text-main bg-gray-100 border-gray-300 focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="link-radio" class="text-gray-400">I agree with the <a href="#" class="text-black underline underline-offset-2 ">terms and conditions</a></label>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="{% url 'shop:product_list' %}" class="text-black text-sm tracking-widest">Continue shopping</a>
+                <a href="{% url 'orders:order_create' %}" class="bg-black text-white py-3 px-8 text-sm tracking-widest">CHECK OUT</a>
+            </div>
+        </div>
+      </div>
+      {% endif %}
+</div>
+{% endblock %}
+
+
+<!-- <h1>Your shopping cart</h1>
 <table class="cart">
     <thead>
         <tr>
@@ -82,5 +207,4 @@ Your shopping cart
     <a href="{% url 'shop:product_list' %}" class="button
 light">Continue shopping</a>
     <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
-</p>
-{% endblock %}
+</p> -->

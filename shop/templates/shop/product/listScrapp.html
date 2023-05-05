@@ -1,0 +1,286 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+ScrrapedProducts
+{% endblock %}
+{% block content %}
+<!-- Banner -->
+<div class="flex items-center justify-center flex-col space-y-3 py-8">
+    <h1 class="font-cormorant text-7xl">Products</h1>
+    <div class="flex items-center space-x-3 text-sm">
+        <span class="text-gray-400">Home</span>
+        <i class='bx bx-chevron-right'></i>
+        <span>Products</span>
+    </div>
+</div>
+<!-- Content Section-->
+<div class="flex flex-col items-center justify-center px-8 2xl:px-[250px]">
+    <!-- Categories -->
+    <div class="flex items-center justify-center w-full ">
+        <div class="grid md:grid-cols-2 xl:grid-cols-5 justify-items-center gap-5 w-full">
+            <div
+                class="group  w-[300px] h-[300px] xl:w-[250px] xl:h-[250px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+                <img src="/media/images/cat-shop/2.webp" class="" />
+                <div
+                    class="group-hover:bg-main group-hover:text-white absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                    <div class="relative flex items-center justify-center bg-white">
+                        <span class="duration-300 transition-all ease-in-out absolute uppercase">BRACELETS</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group  w-[300px] h-[300px] xl:w-[250px] xl:h-[250px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+                <img src="/media/images/cat-shop/1.webp" class="" />
+                <div
+                    class="group-hover:bg-main group-hover:text-white absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                    <div class="relative flex items-center justify-center bg-white">
+                        <span class="duration-300 transition-all ease-in-out absolute uppercase">CHARMS</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group  w-[300px] h-[300px] xl:w-[250px] xl:h-[250px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+                <img src="/media/images/cat-shop/4.webp" class="" />
+                <div
+                    class="group-hover:bg-main group-hover:text-white absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                    <div class="relative flex items-center justify-center bg-white">
+                        <span class="duration-300 transition-all ease-in-out absolute uppercase">EARRINGS</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group  w-[300px] h-[300px] xl:w-[250px] xl:h-[250px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+                <img src="/media/images/cat-shop/5.webp" class="" />
+                <div
+                    class="group-hover:bg-main group-hover:text-white absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                    <div class="relative flex items-center justify-center bg-white">
+                        <span class="duration-300 transition-all ease-in-out absolute uppercase">NECKLACES</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group  w-[300px] h-[300px] xl:w-[250px] xl:h-[250px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+                <img src="/media/images/cat-shop/7.webp" class="" />
+                <div
+                    class="group-hover:bg-main group-hover:text-white absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                    <div class="relative flex items-center justify-center bg-white">
+                        <span class="duration-300 transition-all ease-in-out absolute uppercase text-center">SHOP
+                            EARRINGS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products section -->
+    <div class="flex flex-col xl:flex-row space-y-7 xl:space-y-0 xl:space-x-8 py-10 w-full">
+        <div class="flex flex-col space-y-12 xl:w-1/3">
+            <!-- Collections -->
+            <div class="flex flex-col space-y-5">
+                <div class="justify-between flex items-center w-full">
+                    <p class="text-[20px]  font-cormorant tracking-widest">COLLECTIONS</p>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+                <div class="flex flex-col space-y-3">
+                    <a href="{% url 'shop:product_list' %}" class="flex items-center cursor-pointer">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">All
+                            (11)</label>
+                    </a>
+                  
+                </div>
+            </div>
+            <!-- AVAILABILITY -->
+            <div class="flex flex-col space-y-5">
+                <div class="justify-between flex items-center w-full">
+                    <p class="text-[20px]  font-cormorant tracking-widest">AVAILABILITY</p>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+                <div class="flex flex-col space-y-3">
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">In stock
+                            (31)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">Out of stock
+                            (1)</label>
+                    </div>
+                </div>
+            </div>
+            <!-- PRICE -->
+            <div class="flex flex-col space-y-5">
+                <div class="justify-between flex items-center w-full">
+                    <p class="text-[20px]  font-cormorant tracking-widest">PRICE</p>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+                <div class="">
+                    <label for="minmax-range" class="block mb-2 text-sm text-gray-500 dark:text-white">Min-max
+                        range</label>
+                    <input id="minmax-range" type="range" min="0" max="10" value="5"
+                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+                </div>
+            </div>
+            <!-- Brand -->
+            <div class="flex flex-col space-y-5">
+                <div class="justify-between flex items-center w-full">
+                    <p class="text-[20px]  font-cormorant tracking-widest">BRAND</p>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+                <div class="flex flex-col space-y-3">
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">Aristino Store
+                            (2)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">Maria Store
+                            (1)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">Ilhmjuri – Jewelry
+                            & Fashion Store (1)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">Owen Store
+                            (1)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="checked-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-main bg-gray-100 border-gray-300 rounded focus:ring-main dark:focus:ring-main dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checked-checkbox" class="ml-2  text-sm font-medium text-gray-400">PNJ Store
+                            (1)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col  w-full ">
+            <div class="flex items-center justify-between">
+                <select class="text-gray-500 py-1 px-3 outline-none select" <option value="manual">Featured</option>
+                    <option value="best-selling">Best selling</option>
+                    <option value="title-ascending">Alphabetically, A-Z</option>
+                    <option value="title-descending" selected="selected">Alphabetically, Z-A</option>
+                    <option value="price-ascending">Price, low to high</option>
+                    <option value="price-descending">Price, high to low</option>
+                    <option value="created-ascending">Date, old to new</option>
+                    <option value="created-descending">Date, new to old</option>
+                </select>
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="border rounded-full w-[40px] h-[40px] space-x-[2px] flex items-center justify-center group hover:bg-main cursor-pointer">
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                    </div>
+                    <div
+                        class="border rounded-full w-[40px] h-[40px] space-x-[2px] flex items-center justify-center group hover:bg-main cursor-pointer">
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                    </div>
+                    <div
+                        class="border rounded-full w-[40px] h-[40px] space-x-[2px] flex items-center justify-center group hover:bg-main cursor-pointer">
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[1.7px] h-[10px] group-hover:bg-white bg-gray-400"></span>
+                    </div>
+                    <div
+                        class="border rounded-full w-[40px] h-[40px] space-y-[2px] flex flex-col items-center justify-center group hover:bg-main cursor-pointer">
+                        <span class="w-[10px] h-[1.7px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[10px] h-[1.7px] group-hover:bg-white bg-gray-400"></span>
+                        <span class="w-[10px] h-[1.7px] group-hover:bg-white bg-gray-400"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-2  w-full justify-items-center py-5">
+                {% if lenProd == 0  %}
+                <div class="md:col-span-2 xl:col-span-3 bg-main py-3 text-white flex items-center justify-center w-full">
+                    No products to show for the momments
+                </div>
+                {% endif %}
+                {% for product in products %}
+                <div class="group flex flex-col space-y-3 w-[304px] h-[450px] relative ">
+                    <a class="w-[304px] h-[304px]" href="">         
+                        <img src="{{ product.img }}" class="w-[304px] h-[304px] object-cover" />
+                     </a>
+                   
+                    <div
+                        class="group-hover:bg-white  transition-all duration-400 ease delay-0 py-5 w-full flex flex-col absolute bottom-[25px] space-y-2 justify-center items-center">
+                        <div class="flex items-center text-[10px] space-x-1">
+                            <i class='bx bxs-star text-yellow-400'></i>
+                            <i class='bx bxs-star text-yellow-400'></i>
+                            <i class='bx bxs-star text-yellow-400'></i>
+                            <i class='bx bxs-star text-yellow-400'></i>
+                            <i class='bx bxs-star text-yellow-400'></i>
+                            <span class="text-gray-500">(1)</span>
+                        </div>
+                        <a class="hover:text-main" href="">         
+                           <h6 class="tracking-[3px] uppercase text-[9px] text-center cursor-pointer">{{ product.name }}</h6>
+                         </a>
+                        <span class="text-xl font-semibold leading-none text-main font-cormorant">{{ product.price }} dh</span>
+                        <div
+                            class="group-hover:flex transition-transform duration-400 ease-in-out delay-0 items-center justify-center space-x-2 hidden">
+                            <div
+                                class="cursor-pointer rounded-full border w-9 h-9 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                                <i class='bx bx-shopping-bag text-xl'></i>
+                            </div>
+                            <div
+                                class="cursor-pointer rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                                <i class='bx bx-heart text-xl'></i>
+                            </div>
+                            <div
+                                class="cursor-pointer rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                                <i class='bx bx-git-compare text-xl'></i>
+                            </div>
+                            <div
+                                class="cursor-pointer rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                                <i class='bx bx-search text-xl'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- <div id="sidebar">
+    <h3>Categories</h3>
+    <ul>
+        <li {% if not category %}class="selected" {% endif %}>
+            <a href="{% url 'shop:product_list' %}">All</a>
+        </li>
+        {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="main" class="product-list">
+    <h1>{% if category %}{{ category.name }}{% else %}Products
+        {% endif %}</h1>
+    {% for product in products %}
+    <div class="item">
+        <a href="{{ product.get_absolute_url }}">         
+           <img src="{% if product.image %} /media/{{product.image}}
+            {%else %}
+           {% static 'no_image.png' %}{% endif %}">
+        </a>
+        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+        <br>
+        ${{ product.price }}
+    </div>
+    {% endfor %}
+</div> -->

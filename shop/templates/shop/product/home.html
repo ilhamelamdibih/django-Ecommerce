@@ -1,0 +1,402 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<!-- Carousel -->
+<div id="indicators-carousel" class="relative w-full h-[650px] bg-white" data-carousel="static">
+    <!-- Carousel wrapper -->
+    <div class="relative  overflow-hidden rounded-lg h-[650px] ">
+        <!-- Item 1 -->
+        <div class="hidden duration-700 pb-[80px] md:pb-0 flex flex-col md:flex-row items-center md:justify-start ease-in-out h-[650px]"
+            data-carousel-item="active">
+            <img src="https://cdn.shopify.com/s/files/1/0673/3588/1018/files/slider-7.jpg?v=1667555960"
+                class="md:absolute  block w-full  md:-translate-x-1/2 object-cover md:object-cover w-full h-full md:-translate-y-1/2 top-1/2 left-1/2"
+                alt="...">
+            <div
+                class="z-100 h-full space-y-5 items-center flex flex-col justify-center px-[50px] md:px-[100px] 2xl:px-[200px]  ">
+                <p
+                    class="md:text-main font-medium	md:leading-[4rem] text-5xl md:text-[70px] text-center font-cormorant">
+                    STATMENTS
+                    <br>
+                    MAKERS
+                </p>
+                <div class="text-center text-[14px] md:text-main">
+                    Set off a chain reaction with statement styles that boast large<br>
+                    profiles and embellished details.
+                </div>
+                <button
+                    class="bg-black md:bg-white text-white md:text-black text-xs py-3 px-8 rounded tracking-[4px]">SHOP
+                    NOW</button>
+            </div>
+
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 pb-[80px] md:pb-0 flex flex-col md:flex-row items-center md:justify-start ease-in-out h-[650px]"
+            data-carousel-item>
+            <img src="https://cdn.shopify.com/s/files/1/0673/3588/1018/files/slider-8.jpg?v=1667555961"
+                class="md:absolute  block w-full  md:-translate-x-1/2 object-cover md:object-cover w-full h-full md:-translate-y-1/2 top-1/2 left-1/2"
+                alt="...">
+            <div
+                class="z-100 h-full space-y-5 items-center flex flex-col justify-center px-[50px] md:px-[100px] 2xl:px-[200px]  ">
+                <p
+                    class="md:text-main font-medium	md:leading-[4rem] text-5xl md:text-[70px] text-center font-cormorant">
+                    OH, HELLO
+                    <br>
+                    SPRING!
+                </p>
+                <div class="text-center text-[14px] md:text-main">
+                    Set off a chain reaction with statement styles that boast large<br>
+                    profiles and embellished details.
+                </div>
+                <button
+                    class="bg-black md:bg-white text-white md:text-black text-xs py-3 px-8 rounded tracking-[4px]">SHOP
+                    NOW</button>
+            </div>
+
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 pb-[80px] md:pb-0 flex flex-col md:flex-row items-center md:justify-start ease-in-out h-[650px]"
+            data-carousel-item>
+            <img src="https://cdn.shopify.com/s/files/1/0673/3588/1018/files/2_a8734691-771b-42fd-9815-920816bb8076.jpg?v=1667875589"
+                class="md:absolute  block w-full  md:-translate-x-1/2 object-cover md:object-cover w-full h-full md:-translate-y-1/2 top-1/2 left-1/2"
+                alt="...">
+            <div
+                class="z-100 h-full space-y-5 items-center flex flex-col justify-center px-[50px] md:px-[100px] 2xl:px-[200px]  ">
+                <p
+                    class="md:text-main font-medium	md:leading-[4rem] text-5xl md:text-[70px] text-center font-cormorant">
+                    BEST OF
+                    <br>
+                    THE BEST
+                </p>
+                <div class="text-center text-[14px] md:text-main">
+                    Set off a chain reaction with statement styles that boast large<br>
+                    profiles and embellished details.
+                </div>
+                <button
+                    class="bg-black md:bg-white text-white md:text-black text-xs py-3 px-8 rounded tracking-[4px]">SHOP
+                    NOW</button>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex space-x-6 -translate-x-1/2 bottom-[60px] left-1/2 carousel-indicators ">
+        <button type="button" class="w-[8px] h-[8px] rounded-full" aria-current="true" aria-label="Slide 1"
+            data-carousel-slide-to="0"></button>
+        <button type="button" class="w-[8px] h-[8px] rounded-full" aria-current="false" aria-label="Slide 2"
+            data-carousel-slide-to="1"></button>
+        <button type="button" class="w-[8px] h-[8px] rounded-full" aria-current="false" aria-label="Slide 3"
+            data-carousel-slide-to="2"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button"
+        class="absolute  top-0 left-5 z-30 md:flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hidden"
+        data-carousel-prev>
+        <div
+            class="hover:bg-main hover:border-main hover:text-white duration-400 ease-in transition-all rounded-full border border-black w-[45px] h-[45px] flex items-center justify-center">
+            <i class='bx bx-left-arrow-alt text-md'></i>
+        </div>
+    </button>
+    <button type="button"
+        class="absolute top-0 right-5 z-30 md:flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hidden"
+        data-carousel-next>
+        <div
+            class="hover:bg-main hover:border-main hover:text-white duration-400 ease-in transition-all rounded-full border border-black w-[45px] h-[45px] flex items-center justify-center">
+            <i class='bx bx-right-arrow-alt text-md'></i>
+        </div>
+    </button>
+</div>
+
+<!-- Categories -->
+<div class="py-10 flex justify-center">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 px-5">
+        <div
+            class="hover:animate-pulse w-[300px] h-[300px] lg:w-[280px] lg:h-[280px] 2xl:w-[330px] 2xl:h-[330px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+            <img src="/media/images/categories/10.webp" class="" />
+            <div
+                class="group absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                <div class="relative flex items-center justify-center bg-white">
+                    <span
+                        class="group-hover:-right-[100px] group-hover:opacity-0 duration-300 transition-all ease-in-out absolute">NECKLACES</span>
+                    <i
+                        class='rotate-180 bx bx-arrow-back text-lg -left-[100px] opacity-0 group-hover:-left-3 group-hover:opacity-100 duration-300 transition-all ease-in-out absolute'></i>
+                </div>
+            </div>
+        </div>
+        <div
+            class="hover:animate-pulse w-[300px] h-[300px] lg:w-[280px] lg:h-[280px] 2xl:w-[330px] 2xl:h-[330px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+            <img src="/media/images/categories/8.jpg" class="" />
+            <div
+                class="group absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                <div class="relative flex items-center justify-center bg-white">
+                    <span
+                        class="group-hover:-right-[100px] group-hover:opacity-0 duration-300 transition-all ease-in-out absolute">EARRINGS</span>
+                    <i
+                        class='rotate-180 bx bx-arrow-back text-lg -left-[100px] opacity-0 group-hover:-left-3 group-hover:opacity-100 duration-300 transition-all ease-in-out absolute'></i>
+                </div>
+            </div>
+        </div>
+        <div
+            class="hover:animate-pulse w-[300px] h-[300px] lg:w-[280px] lg:h-[280px] 2xl:w-[330px] 2xl:h-[330px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+            <img src="/media/images/categories/9.webp" class="" />
+            <div
+                class="group absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                <div class="relative flex items-center justify-center bg-white">
+                    <span
+                        class="group-hover:-right-[100px] group-hover:opacity-0 duration-300 transition-all ease-in-out absolute">BRACELETS</span>
+                    <i
+                        class='rotate-180 bx bx-arrow-back text-lg -left-[100px] opacity-0 group-hover:-left-3 group-hover:opacity-100 duration-300 transition-all ease-in-out absolute'></i>
+                </div>
+            </div>
+        </div>
+        <div
+            class="hover:animate-pulse w-[300px] h-[300px] lg:w-[280px] lg:h-[280px] 2xl:w-[330px] 2xl:h-[330px] flex item-center justify-center bg-gray-100 overflow-hidden relative">
+            <img src="/media/images/categories/ring.avif" class="" />
+            <div
+                class="group absolute bottom-9 bg-white text-[11px] w-[180px] h-[40px] flex items-center justify-center tracking-[4px]">
+                <div class="relative flex items-center justify-center bg-white">
+                    <span
+                        class="group-hover:-right-[100px] group-hover:opacity-0 duration-300 transition-all ease-in-out absolute">WEDDING
+                        & BRIDAL</span>
+                    <i
+                        class='rotate-180 bx bx-arrow-back text-lg -left-[100px] opacity-0 group-hover:-left-3 group-hover:opacity-100 duration-300 transition-all ease-in-out absolute'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Advertising -->
+<div class="flex items-center justify-center py-10 px-10 2xl:px-0  mb-10 lg:mb-0 ">
+    <div class="grid lg:grid-cols-2 gap-10">
+        <div class="relative flex items-center justify-center">
+            <img src="/media/images/advertising/lookbook-1.webp" class="" />
+            <div class="absolute w-7 h-7 rounded-full flex items-center justify-center text-black bg-white">
+                <span class="w-8 h-8 bg-transparent border border-white absolute rounded-full animationPing"></span>
+                <span class="w-7 h-7 bg-transparent border border-white absolute rounded-full animationPing1"></span>
+                <i class="bx bx-plus text-xl"></i>
+            </div>
+        </div>
+        <div class="flex flex-col items-center justify-center leading-[2rem] space-y-2">
+            <h1 class="text-[40px] font-cormorant font-medium text-main">Curated by color</h1>
+            <p class="text-[#868686] text-[14px]">Brighten up your look with vibrant gemstone jewelry.</p>
+            <button class="tracking-[4px] text-bold text-white text-[11px] bg-main py-2 px-8">SHOP NOW</button>
+        </div>
+        <div class="hidden lg:flex flex-col items-center justify-center leading-[2rem] space-y-2">
+            <h1 class="text-[40px] font-cormorant font-medium text-main">Make the connection</h1>
+            <p class="text-[#868686] text-[14px]">Introducing your outfit’s missing link.</p>
+            <button class="tracking-[4px] text-bold text-white text-[11px] bg-main py-2 px-8">SHOP NOW</button>
+        </div>
+        <div class="relative flex items-center justify-center">
+            <img src="/media/images/advertising/lookbook-2.webp" class="" />
+            <div class="absolute w-7 h-7 rounded-full flex items-center justify-center text-black bg-white">
+                <span class="w-8 h-8 bg-transparent border border-white absolute rounded-full animationPing"></span>
+                <span class="w-7 h-7 bg-transparent border border-white absolute rounded-full animationPing1"></span>
+                <i class="bx bx-plus text-xl"></i>
+            </div>
+        </div>
+        <div class="lg:hidden flex flex-col items-center justify-center leading-[2rem] space-y-2">
+            <h1 class="text-[40px] font-cormorant font-medium text-main">Make the connection</h1>
+            <p class="text-[#868686] text-[14px]">Introducing your outfit’s missing link.</p>
+            <button class="tracking-[4px] text-bold text-white text-[11px] bg-main py-2 px-8">SHOP NOW</button>
+        </div>
+    </div>
+</div>
+
+<!-- Trending -->
+<div class="bg-trending py-[40px]">
+    <h1 class="text-center text-5xl  text-main font-cormorant">Trending Product</h1>
+    <div class="flex items-center justify-center py-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="group flex flex-col space-y-3 w-[304px] h-[450px] relative ">
+                <img src="/media/images/products/1.webp" class="w-[304px] h-[304px] object-cover" />
+                <div
+                    class="group-hover:bg-white  transition-all duration-400 ease delay-0 py-5 w-full flex flex-col absolute bottom-[25px] space-y-2 justify-center items-center">
+                    <div class="flex items-center text-[10px] space-x-1">
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <span class="text-gray-500">(1)</span>
+                    </div>
+                    <h6 class="tracking-[3px] uppercase text-[9px]">Yilver And Turquoise Earrings</h6>
+                    <span class="text-xl font-semibold leading-none text-main font-cormorant">1,608.00 dh</span>
+                    <div
+                        class="group-hover:flex transition-transform duration-400 ease-in-out delay-0 items-center justify-center space-x-2 hidden">
+                        <div
+                            class="rounded-full border w-9 h-9 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-shopping-bag text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-heart text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-git-compare text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-search text-xl'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group flex flex-col space-y-3 w-[304px] h-[450px] relative ">
+                <img src="/media/images/products/2.webp" class="w-[304px] h-[304px] object-cover" />
+                <div
+                    class="group-hover:bg-white  transition-all duration-400 ease delay-0 py-5 w-full flex flex-col absolute bottom-[25px] space-y-2 justify-center items-center">
+                    <div class="flex items-center text-[10px] space-x-1">
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <span class="text-gray-500">(0)</span>
+                    </div>
+                    <h6 class="tracking-[3px] uppercase text-[9px]">Wayman Luxe Silver</h6>
+                    <span class="text-xl font-semibold leading-none text-main font-cormorant">1,709.00 dh</span>
+                    <div
+                        class="group-hover:flex transition-transform duration-400 ease-in-out delay-0 items-center justify-center space-x-2 hidden">
+                        <div
+                            class="rounded-full border w-9 h-9 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-shopping-bag text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-heart text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-git-compare text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-search text-xl'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group flex flex-col space-y-3 w-[304px] h-[450px] relative ">
+                <img src="/media/images/products/3.webp" class="w-[304px] h-[304px] object-cover" />
+                <div
+                    class="group-hover:bg-white  transition-all duration-400 ease delay-0 py-5 w-full flex flex-col absolute bottom-[25px] space-y-2 justify-center items-center">
+                    <div class="flex items-center text-[10px] space-x-1">
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <i class='bx bxs-star text-gray-300'></i>
+                        <span class="text-gray-500">(0)</span>
+                    </div>
+                    <h6 class="tracking-[3px] uppercase text-[9px]">Zing In Pink Plated Sterling Silver</h6>
+                    <span class="text-xl font-semibold leading-none text-main font-cormorant">754.00 dh</span>
+                    <div
+                        class="group-hover:flex transition-transform duration-400 ease-in-out delay-0 items-center justify-center space-x-2 hidden">
+                        <div
+                            class="rounded-full border w-9 h-9 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-shopping-bag text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-heart text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-git-compare text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-search text-xl'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group flex flex-col space-y-3 w-[304px] h-[450px] relative ">
+                <img src="/media/images/products/4.webp" class="w-[304px] h-[304px] object-cover" />
+                <div
+                    class="group-hover:bg-white  transition-all duration-400 ease delay-0 py-5 w-full flex flex-col absolute bottom-[25px] space-y-2 justify-center items-center">
+                    <div class="flex items-center text-[10px] space-x-1">
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <i class='bx bxs-star text-yellow-400'></i>
+                        <span class="text-gray-500">(1)</span>
+                    </div>
+                    <h6 class="tracking-[3px] uppercase text-[9px]">Z 0.63ct TDW 14k White Gold</h6>
+                    <span class="text-xl font-semibold leading-none text-main font-cormorant">905.00 dh</span>
+                    <div
+                        class="group-hover:flex transition-transform duration-400 ease-in-out delay-0 items-center justify-center space-x-2 hidden">
+                        <div
+                            class="rounded-full border w-9 h-9 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-shopping-bag text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-heart text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-git-compare text-xl'></i>
+                        </div>
+                        <div
+                            class="rounded-full border w-8 h-8 flex items-center justify-center hover:border-main hover:bg-main hover:text-white">
+                            <i class='bx bx-search text-xl'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Started With Love -->
+<div
+    class="flex flex-col lg:flex-row space-y-5 lg:space-y-0 items-center lg:space-x-5 justify-center py-[80px] px-10 lg:px-[80px] 2xl:px-[200px]">
+    <div class="flex flex-col space-y-5">
+        <h1 class="text-main text-5xl 2xl:text-7xl font-cormorant">It started with love</h1>
+        <p class="text-[14px] text-[#868686]">Behind our 15-year success is our panel of expert jewellers who have been
+            scouring the entire globe in pursuit of the best and most stunning jewellery that can be offered at
+            affordable price for you.</p>
+        <p class="text-[14px] text-[#868686]">Visit our online catalogue and shop for the finest earrings, rings,
+            bracelets, watches, silver, and the most luxurious gemstones.</p>
+        <button class="tracking-widest text-sm bg-main py-3 px-5 text-white w-max">ABOUT US</button>
+    </div>
+    <img src="/media/images/img-3.webp" class="lg:w-3/5 2xl:w-full" />
+</div>
+
+<!-- Our Store -->
+<div class="flex items-center justify-center px-[10px] py-[100px] bg-store bg-center lg:bg-cover">
+    <div class="bg-white py-[50px] px-[100px] flex flex-col space-y-2 items-center justify-center">
+        <img src="/media/images/home.png" class="w-[70px]" />
+        <h1 class="text-[40px] font-semibold font-cormorant text-main">Visit Our Store</h1>
+        <p class="text-[#868686] text-[14px] text-center">
+            Marrakech Rh, ElDaouidare Vej 13 ,8200 Moe N, Morrocco
+        </p>
+        <p class="text-[#868686] text-[14px] text-center">
+            Email : sayhello@ilhamestore.com
+        </p>
+        <p class="text-[#868686] text-[14px] text-center">
+            Phone : (+212) 7199 2516
+        </p>
+    </div>
+</div>
+
+<!-- Brands -->
+<div class="py-[20px] md:px-[100px] grid md:grid-cols-3 lg:grid-cols-5 gap-5 justify-items-center border-b-2">
+    <img src="/media/images/brands/1.webp"
+        class="md:w-[130px] md:h-[130px] hover:scale-75 transition-all duration-300 ease-in-out" />
+    <img src="/media/images/brands/2.webp"
+        class="md:w-[130px] md:h-[130px] hover:scale-75 transition-all duration-300 ease-in-out" />
+    <img src="/media/images/brands/3.webp"
+        class="md:w-[130px] md:h-[130px] hover:scale-75 transition-all duration-300 ease-in-out" />
+    <img src="/media/images/brands/4.avif"
+        class="md:w-[130px] md:h-[130px] hover:scale-75 transition-all duration-300 ease-in-out" />
+    <img src="/media/images/brands/5.jpg"
+        class="md:w-[130px] md:h-[130px] hover:scale-75 transition-all duration-300 ease-in-out" />
+</div>
+{% endblock %}

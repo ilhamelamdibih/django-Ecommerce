@@ -8,6 +8,9 @@ def payment_process(request):
         order_id = request.session.get('order_id')
         order = get_object_or_404(Order, id=order_id)
         total_cost = order.get_total_cost()
+        print('order_id',order_id)
+        print('order',order)
+        print('total_cost',total_cost)
         if request.method == 'POST':
             # retrieve nonce
             nonce = request.POST.get('payment_method_nonce', None)

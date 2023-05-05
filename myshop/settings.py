@@ -143,6 +143,9 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
 
+LOGOUT_REDIRECT_URL = '/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

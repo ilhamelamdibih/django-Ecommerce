@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 class ClientRegistrationView(CreateView):
     template_name = 'clients/client/registration.html'  
     form_class = UserCreationForm
-    success_url = reverse_lazy('client_course_list')
+    success_url = reverse_lazy('shop:product_home')
     def form_valid(self, form):
         result = super().form_valid(form)
         cd = form.cleaned_data

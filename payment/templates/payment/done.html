@@ -1,6 +1,14 @@
 {% extends "shop/base.html" %}
 {% block title %}Payment successful{% endblock %}
 {% block content %}
-<h1>Your payment was successful</h1>
-<p>Your payment has been processed successfully.</p>
+<div class="flex items-center justify-center py-10 w-full bg-gray-100">
+    <div class="bg-green-400 flex items-center space-x-10 rounded-lg py-5 px-7 shadow text-white">
+        <i class='bx bx-check-circle text-[80px]' ></i>
+        <div class="flex flex-col">
+            <h1>Your payment was successful</h1>
+            <p>Your payment has been processed successfully.</p>
+        <a href="{% url 'shop:product_home' %}" class="underline underline-offset-2  text-sm">Continue Shopping</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

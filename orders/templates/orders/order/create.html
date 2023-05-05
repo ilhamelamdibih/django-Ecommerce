@@ -1,20 +1,97 @@
 {% extends "shop/base.html" %}
 {% load i18n %}
+{% load static %}
 {% block title %}
 {% trans "Checkout" %}
 {% endblock %}
 {% block content %}
-<h1>{% trans "Checkout" %}</h1>
+ <!-- Checkout Section -->
+    <div class="grid lg:grid-cols-2 gap-5 px-10 lg:px-[100px] 2xl:px-[280px] py-7 bg-gray-100">
+        <div class="rounded shadow bg-white py-5 px-7">
+            <p class="text-[40px] font-cormorant">Checkout</p>
+            <div class="flex items-center space-x- text-xs border-b pb-5">
+                <p class="text-gray-400">Cart</p>
+                <i class='bx bx-chevron-right' ></i>
+                <p class="text-main">Checkout</p>
+                <i class='bx bx-chevron-right' ></i>
+                <p>Payment Method</p>
+            </div>
+            <form method="post" class="py-3" >
+                <p class="text-[20px]">Contact Information</p>
+                <div class="grid lg:grid-cols-2 gap-5 py-5">
+                    <input id="id_first_name" name="first_name" type="text" class="text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3 placeholder:text-gray-500" placeholder="First name"/>
+                    <input id="id_last_name" name="last_name" type="text" class="text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3 placeholder:text-gray-500" placeholder="Last name"/>
+                    <input id="id_email" name="email" type="email" class="lg:col-span-2 text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3 placeholder:text-gray-500" placeholder="Your email"/>
+                    <input id="id_address" name="address" type="text" class="lg:col-span-2 text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3 placeholder:text-gray-500" placeholder="Your address"/>
+                    <input id="id_city" name="city" type="text" class="text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3 placeholder:text-gray-500" placeholder="Your city"/>
+                    <input id="id_postal_code" name="postal_code" type="text" class="text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3 placeholder:text-gray-500" placeholder="Code postal"/>
+                </div>
+                <div class="flex items-center justify-between">
+                    <a href="" class="flex items-center space-x-1 text-sm">
+                        <i class='bx bx-chevron-left' ></i>
+                        <span>Return to your cart</span>
+                    </a>
+                    <button type="submit" class="text-white bg-black hover:bg-main py-2 px-7 text-sm tracking-widest rounded transition-all duration-300 ease-in-out">
+                        Place your order
+                    </button>
+                    {% csrf_token %}
+                </div>
+            </form>
+        </div>
+        <div class="flex flex-col w-full py-5 px-5">
+            <div class="flex flex-col space-y-3 w-full border-b border-gray-300 pb-5">
+                {% for item in cart %}
+                {% with product=item.product %}
+                <div class="flex space-x-5 w-full">
+                    <img src="{% if product.image %}
+                    {{ product.image.url}}
+                    {% else %}
+                    {% static ' img/no_image.png' %}{% endif %}" class="w-[70px] h-[70px] rounded-full" />
+                    <div class="flex items-center justify-between w-full">
+                        <div class="flex flex-col space-y-1">
+                            <p class="text-[14px] font-semibold">{{ product.name }}</p>
+                            <p class="uppercase text-[12px] text-gray-400">{{ product.category.name }}</p>
+                        </div>
+                        <span class="text-[14px] font-semibold">{{ item.total_price|floatformat:2 }} dh</span>
+                    </div>
+                </div>
+                {% endwith %}
+                {% endfor %}
+            </div>
+            <div class="pt-5 flex flex-col space-y-3">
+                <div class="flex items-center space-x-2 justify-between lg:justify-end">
+                    <p>Sub total :</p>
+                    <p class="font-semibold">{{ item.total_price|floatformat:2 }} dh</p>
+                </div>
+                {% if cart.coupon %}
+                <div class="flex items-center space-x-2 justify-between lg:justify-end text-sm">
+                    <p>Coupon :</p>
+                    <p class="font-semibold text-[#f11e1e]">- {{ cart.get_discount|floatformat:2 }} dh</p>
+                </div>
+                <p class="flex space-x-2 justify-between lg:justify-end text-xs text-green-400 ">"{{ cart.coupon.code }}" ({{ cart.coupon.discount }}% off)</p>
+                {% endif %}
+                <div class="flex font-semibold items-center space-x-2 justify-between lg:justify-end text-lg">
+                    <p>Total :</p>
+                    <p class="font-semibold">{{ cart.get_total_price_after_discount|floatformat:2 }} dh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!-- <h1>{% trans "Checkout" %}</h1>
 <div class="order-info">
     <h3>{% trans "Your order" %}</h3>
     <ul>
         {% for item in cart %}
+        {% with product=item.product %}
         <li>
             {% blocktrans with code=cart.coupon.code discount=cart.coupon.discount %}
                  "{{ code }}" ({{ discount }}% off)
             {% endblocktrans %}
             <span>${{ item.total_price|floatformat:2 }}</span>
+            <span>{{ product.name }}</span>
         </li>
+        {% endwith %}
         {% endfor %}
         {% if cart.coupon %}
         <li>
@@ -29,5 +106,4 @@
     {{ form.as_p }}
     <p><input type="submit" value='{% trans "Place order" %}'></p>
     {% csrf_token %}
-</form>
-{% endblock %}
+</form> -->

@@ -14,7 +14,7 @@ def cart_add(request, product_id):
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
-            quantity=cd['quantity'],
+            quantity=int(cd['quantity']),
             override_quantity=cd['override'])
     return redirect('cart:cart_detail')
 
@@ -27,9 +27,11 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    
     for item in cart:
+        print('ietmemee detail q',item['quantity'])
         item['update_quantity_form'] = CartAddProductForm(initial={
             'quantity': item['quantity'],'override': True})
     coupon_apply_form = CouponApplyForm()
-    return render(request, 'cart/detail.html', {'cart': cart,'coupon_apply_form': coupon_apply_form})
+    return render(request, 'cart/detail.html', {'lenCart':len(cart),'cart': cart,'coupon_apply_form': coupon_apply_form})
 

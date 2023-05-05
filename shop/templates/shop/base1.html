@@ -1,0 +1,349 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}{% trans "My shop" %}{% endblock %}
+    </title>
+    <!-- <link href="{% static 'css/base.css' %}" rel="stylesheet"> -->
+
+    <style>
+       
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Lato&family=Oleo+Script&family=Sacramento&display=swap"
+        rel="stylesheet">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'main': '#cb8161'
+                        },
+                        fontFamily: {
+                            'lato': ['Lato', 'sans-serif'],
+                            'oleo': ['Oleo Script', 'cursive'],
+                            'sacra': ['Sacramento', 'cursive'],
+                            'cormorant': ['Cormorant Garamond', 'serif']
+                        },
+                        zIndex: {
+                            '100': '100',
+                            '90': '90',
+                            '90': '90'
+                        },
+                        backgroundImage:{
+                            'trending':'url("images/bg.webp")',
+                            'store':'url("images/bg1.webp")'
+                        }
+                    }
+                },
+    
+            }
+        </script>
+</head>
+
+<body class="font-lato flex flex-col leading-relaxed	relative">
+    <!-- header -->
+    <header class="w-full flex flex-col">
+        <!-- Topbar -->
+        <div
+            class="bg-[#EEEEEE] text-[#868686] text-[13px] px-[20px] lg:px-[80px] justify-items-center gap-y-2 lg:gap-y-0 py-[11px] grid lg:grid-cols-3 font-normal">
+            <div class="flex items-center space-x-4 w-full justify-center lg:justify-start">
+                <div class="flex items-center space-x-2">
+                    <i class='bx bx-map'></i>
+                    <span>Store Location</span>
+                </div>
+                <span class="h-[12px] w-[1px] bg-[#868686]"></span>
+                <div class="flex items-center space-x-2">
+                    <i class='bx bx-envelope'></i>
+                    <span>support@Ilhame.com</span>
+                </div>
+            </div>
+            <div class="w-full flex items-center justify-center">
+                <span>Summer sale discount off 30%! </span>
+                <a href="#" class="text-[#cb8161]">Shop Now</a>
+            </div>
+            <div class="flex items-center space-x-4 w-full justify-center lg:justify-end">
+                <div class="flex items-center space-x-1">
+                    <span>MAD</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+                <span class="h-[12px] w-[1px] bg-[#868686]"></span>
+                <div class="flex items-center space-x-1">
+                    <span>English</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </div>
+        <!-- MiddleBar -->
+        <div class="grid grid-cols-3 py-[20px] px-[20px] lg:px-[80px] header bg-white fade">
+            <div class="w-full flex items-center space-x-3 md:space-x-0 justify-start text-xl md:text-2xl">
+                <i onclick="toggleSide()" class='bx bx-menu flex text-2xl md:hidden'></i>
+                <i class='bx bx-search'></i>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}">
+                    <i class='bx bx-door-open md:hidden flex'></i>
+                </a>
+                {% endif %}
+            </div>
+            <div class="w-full flex items-center justify-center text-3xl md:text-4xl font-black font-sacra">
+                <h1 class="font-sacra">Ilhmjury</h1>
+            </div>
+            <div class="flex items-center space-x-3 w-full justify-end text-xl md:text-2xl">
+                {% if request.user.is_authenticated %}
+                <span class="text-md font-[500] font-cormorant ">Hi, {{ request.user.username }}</span>
+                <a href="{% url 'logout' %}">
+                    <i class='bx bx-door-open hidden md:flex'></i>
+                </a>
+                {% else %}
+                <i onclick="toggleAuthModal()" class='bx bx-user leading hidden md:flex'></i>
+                {% endif %}
+                <div class="relative">
+                    <span
+                        class="absolute rounded-full text-white text-center top-[-5px] right-[-15px] text-[11px] leading-[20px] h-[20px] w-[20px] bg-[#cb8161] inline-block">0</span>
+                    <i class='bx bx-heart leading'></i>
+                </div>
+                {% with total_items=cart|length %}
+                <a href="{% url 'cart:cart_detail' %}" class="relative">
+                    <span
+                    class="absolute rounded-full text-white text-center top-[-5px] right-[-15px] text-[11px] leading-[20px] h-[20px] w-[20px] bg-[#cb8161] inline-block">{{total_items}}</span>
+                <i class='bx bx-shopping-bag leading'></i>
+                </a>
+
+                {% endwith %}
+
+            </div>
+
+        </div>
+        <!-- NavBar -->
+        <div
+            class="py-[19px] hidden space-x-5 md:flex items-center tracking-[2px] justify-center text-[12px] text-white bg-[#cb8161]">
+            <a  href="/shop/" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>HOME</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a href="/shop/products" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>SHOP</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a href="/shop/products" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>PRODUCT</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a href="/shop/productScrapped" class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>SCRAPPED PRODUCTS</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <a class="flex items-center space-x-1 hover:text-gray-50 cursor-pointer">
+                <span>FEAUTURED</span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+        </div>
+        <!-- SideBar -->
+        <div
+            class="md:hidden side opacity-0 invisible fixed top-0 bottom-0 left-0 z-100 w-full transition-opacity duration-400 ease delay-0">
+            <div class="absolute top-0 left-0 w-full h-full z-1 bg-[#0006]"></div>
+            <div
+                class=" bg-[#FBFBFB] z-2 absolute top-0 left-0 bottom-0 w-[320px] overflow-hidden pt-[65px] pb-[20px] px-[15px] transition-all duration-400 ease delay-0">
+                <div class="px-[15px] py-[20px] text-lg flex items-center justify-end absolute top-0 right-0">
+                    <i onclick="toggleSide()"
+                        class='bx bx-x bg-white  w-[35px] h-[35px] rounded-full flex items-center justify-center'></i>
+                </div>
+                <div class="flex flex-col w-full tracking-[3px]">
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">HOME</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">SHOP</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">BLOG</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">PRODUCT</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b">
+                        <span class="text-xs">FEAUTURED</span>
+                        <i class='bx bx-chevron-right text-xl text-gray-300'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BottomBar -->
+        <div
+            class="fixed flex justify-between items-center text-[10px]  left-0 w-full bottom-0 bg-white cstshdw w-full lg:hidden z-90 py-[5px] px-[15px] h-[50px]">
+            <div class="flex flex-col items-center">
+                <i class='bx bx-home-alt text-[20px]'></i>
+                <span>Home</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class='bx bx-grid-alt text-[20px]'></i>
+                <span>SHOP</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class='bx bx-search text-[20px]'></i>
+                <span>SEARCH</span>
+            </div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="flex flex-col items-center">
+                <i class='bx bx-user text-[20px]'></i>
+                <span>{{ request.user.username }}</span>
+            </a>
+            {% else %}
+            <div onclick="toggleAuthModal()" class="flex flex-col items-center">
+                <i class='bx bx-user text-[20px]'></i>
+                <span>ACCOUNT</span>
+               
+            </div>
+            {% endif %}
+            <div class="flex flex-col items-center relative">
+                <span
+                    class="absolute rounded-full text-white text-center top-[-5px] right-[-2px] text-[11px] leading-[20px] h-[20px] w-[20px] bg-black inline-block">0</span>
+                <i class='bx bx-heart text-[20px]'></i>
+                <span>WISHLIST</span>
+            </div>
+        </div>
+
+        <div
+            class="grid md:grid-cols-3 space-y-5 md:space-y-0 md:space-x-10 text-[11px] py-3 px-5 md:px-[50px] lg:px[100px] 2xl:px-[200px]">
+            <div class="flex items-center space-x-4 justify-center">
+                <img src="/media/images/header/delivery-truck.png" class="h-[30px]" />
+                <p class="tracking-[4px]">FREE SHIPPING OVERS $60</p>
+            </div>
+            <div class="flex items-center space-x-4 justify-center">
+                <img src="/media/images/header/exchange.png" class="h-[20px]" />
+                <p class="tracking-[4px]">EASY EXCHANGES & RETURNS</p>
+            </div>
+            <div class="flex items-center space-x-4 justify-center">
+                <img src="/media/images/header/24-hours.png" class="h-[25px]" />
+                <p class="tracking-[4px]">24/7 FREE SUPPORT</p>
+            </div>
+        </div>
+       </header>
+    <div id="content" class="flex items-center justify-center  w-screen bg-gray-100">
+        {% block content %}
+        {% endblock %}
+    </div>
+     <!-- Footer -->
+     <footer class="py-[50px] grid lg:grid-cols-3 px-5 lg:px-[200px]">
+        <div class="lg:hidden flex flex-col space-y-5 items-center justify-center border-b pb-[50px]">
+            <h1 class="text-3xl md:text-4xl font-black font-sacra">Ilhmjury</h1>
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-facebook text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-twitter text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-instagram-alt text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-gmail text-xl' ></i>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col items-center lg:items-start space-y-3 py-[50px] lg:py-5 border-b lg:border-0">
+            <p class="text-[16px] font-semibold font-cormorant tracking-widest">OUR NEWSLETTER</p>
+            <p class="text-[#868686] text-md">Sign up for the latest Ice offers and exclusives.</p>
+            <div class="flex items-center space-x-2">
+                <input type="email" class="outline-none border border-gray-500 focus:border-main py-3 px-4 text-sm text-[#868686]" placeholder="Your email" />
+                <button class="bg-black text-white px-5 h-full">
+                    <i class='bx bx-envelope text-xl' ></i>
+                </button>
+            </div>
+            <img src="/media/images/payments.png" class="w-[390px] pt-4"/>
+        </div>
+        <div class="hidden lg:flex flex-col space-y-5 items-center justify-center border-x-2 py-5">
+            <h1 class="text-3xl md:text-4xl font-black font-sacra">Ilhmjury</h1>
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-facebook text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-twitter text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-instagram-alt text-xl' ></i>
+                </div>
+                <div class="w-9 h-9 rounded-full border flex items-center justify-center hover:text-white hover:bg-main">
+                    <i class='bx bxl-gmail text-xl' ></i>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 justify-items-center  pt-[50px] lg:pt-0">
+            <div class="flex flex-col space-y-5">
+                <p class="text-[16px] font-semibold font-cormorant tracking-widest">CUSTOMER SERVICES</p>
+                <div class="flex flex-col space-y-1 text-[#868686] text-md">
+                    <a href="#">Contact Us</a>
+                    <a href="#">Track Your Order</a>
+                    <a href="#">Product Care & Repair</a>
+                    <a href="#">Book an Appointment</a>
+                    <a href="#">Frequently Asked Questions</a>
+                    <a href="#">Shipping & Returns</a>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-5">
+                <p class="text-[16px] font-semibold font-cormorant tracking-widest">ABOUT US</p>
+                <div class="flex flex-col space-y-1 text-[#868686] text-md">
+                    <a href="#">About Us
+                    </a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Our Producers</a>
+                    <a href="#">Sitemap</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright -->
+    <div class="py-5 flex items-center justify-center border-t-2 text-[#868686] mb-[50px] lg:mb-0">
+        <h1>Copyright © 2023 Ilhmjuri Jewellery</h1>
+    </div>
+    <script>
+        function toggleSide() {
+            const side = document.querySelector('.side')
+            side.classList.toggle('visible')
+            side.classList.toggle('invisible')
+            side.classList.toggle('opacity-0')
+            side.classList.toggle('opacity-100	')
+        }
+
+        const header = document.querySelector('.header')
+        window.addEventListener('scroll', () => {
+            if ((window.scrollY || window.pageYOffset) > 10) {
+                header.classList.add('fixed')
+                header.classList.add('z-100')
+                header.classList.add('shadow');
+                header.classList.add('top-0');
+                header.classList.add('w-full');
+            } else {
+                header.classList.remove('fixed')
+                header.classList.remove('z-100')
+                header.classList.remove('shadow');
+                header.classList.remove('top-0');
+                header.classList.remove('w-full');
+            }
+        })
+
+        function toggleAuthModal() {
+            const authmodal = document.querySelector('.authmodal')
+            authmodal.classList.toggle('hidden')
+            authmodal.classList.toggle('flex')
+        }
+    </script>
+</body>
+
+</html>

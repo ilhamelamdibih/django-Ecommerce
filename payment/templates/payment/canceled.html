@@ -1,6 +1,14 @@
 {% extends "shop/base.html" %}
 {% block title %}Payment canceled{% endblock %}
 {% block content %}
-<h1>Your payment has not been processed</h1>
-<p>There was a problem processing your payment.</p>
+<div class="flex items-center justify-center py-10 w-full bg-gray-100">
+    <div class="bg-[#f11e1e] flex items-center space-x-10 rounded-lg py-5 px-7 shadow text-white">
+        <i class='bx bx-error-alt text-[80px]' ></i>
+        <div class="flex flex-col">
+            <h1>Your payment has not been processed</h1>
+        <p>There was a problem processing your payment.</p>
+        <a href="{% url 'payment:process' %}" class="underline underline-offset-2  text-sm">Return to payment</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

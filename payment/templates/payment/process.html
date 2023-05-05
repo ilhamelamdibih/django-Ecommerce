@@ -1,20 +1,44 @@
-{% extends "shop/base.html" %}
+{% extends "shop/base1.html" %}
 {% block title %}Pay by credit card{% endblock %}
 {% block content %}
-<h1>Pay by credit card</h1>
-<form id="payment" method="post">
-    <label for="card-number">Card Number</label>
-    <div id="card-number" class="field"></div>
-    <br>
-    <label for="cvv">CVV</label>
-    <div id="cvv" class="field"></div>
-    <br>
-    <label for="expiration-date">Expiration Date</label>
-    <div id="expiration-date" class="field"></div>
-    <input type="hidden" id="nonce" name="payment_method_nonce" value="">
-    {% csrf_token %}
-    <input type="submit" value="Pay">
-</form>
+<div class="py-7 bg-gray-100 px-10 flex items-center justify-center w-full">
+    <div class="rounded shadow bg-white py-5 px-7">
+        <p class="text-[40px] font-cormorant">Payment</p>
+        <div class="flex items-center space-x- text-xs border-b pb-5">
+            <p class="text-gray-400">Cart</p>
+            <i class='bx bx-chevron-right text-gray-400' ></i>
+            <p class="text-gray-400">Checkout</p>
+            <i class='bx bx-chevron-right' ></i>
+            <p>Payment Method</p>
+        </div>
+        <div class="py-3">
+            <p class="text-[20px]">Payment Information</p>
+            <div class="grid  gap-1 py-5">
+                <form id="payment" method="post">
+                    <label for="card-number" class="text-[12px] pb-2">Card Number</label>
+                    <div id="card-number" class="field h-[40px] text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3  md:w-[400px]"></div>
+                    <br>
+                    <label for="cvv" class="text-[12px] pb-2">CVV</label>
+                    <div id="cvv" class="field h-[40px] text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3  md:w-[400px]"></div>
+                    <br>
+                    <label for="expiration-date" class="text-[12px] pb-2">Expiration Date</label>
+                    <div id="expiration-date" class="field h-[40px] text-sm outline-none focus:border-main border border-gray-300 rounded py-2 px-3  md:w-[400px]"></div>
+                    <input type="hidden" id="nonce" name="payment_method_nonce" value="">
+                    
+                    <img src="/media/images/trusted.png" class="lg:w-[400px] pt-3 pb-7" />
+                    <div class="flex items-center justify-between">
+                        <a href="{% url 'orders:order_create' %}" class="flex items-center space-x-1 text-sm">
+                            <i class='bx bx-chevron-left' ></i>
+                            <span>Return to Checkout </span>
+                        </a>
+                        <input type="submit" value="Valid your paiment" class="text-white bg-black hover:bg-main py-2 px-7 text-sm tracking-widest rounded transition-all duration-300 ease-in-out">
+                        {% csrf_token %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- includes the Braintree JS client SDK -->
 <script src="https://js.braintreegateway.com/web/3.59.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.59.0/js/hosted-fields.min.js"></script>
