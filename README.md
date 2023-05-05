@@ -57,19 +57,19 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   style="display: inline-block; margin: 0 auto; width:700px; max-width: 200px">
   
  ## PAGES ON MOBILE
-<h3>
+<div style="display:flex;">
 <img
   src="/images/productMobile.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; width:300px;">
+  style="display: inline-block; padding-left:10px; margin: 0 auto; width:300px;">
 </h3>
 <img
   src="/images/homeMobile.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto;width:300px;">
-</h3>
+</div>
 
 ## Conclusion
 This online jewelry shop project demonstrates the use of Django and TailwindCSS to build a web application for e-commerce. The project provides functionality for browsing and purchasing jewelry items, as well as managing products, orders, and users through the admin panel. By using these technologies, the project is able to provide a responsive and user-friendly experience for customers.
