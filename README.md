@@ -62,7 +62,7 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   src="/images/productMobile.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; padding-left:10px; margin: 0 auto; width:300px;">
+  style="display: inline-block; padding-right:30px; margin: 0 auto; width:300px;">
 </h3>
 <img
   src="/images/homeMobile.png"
