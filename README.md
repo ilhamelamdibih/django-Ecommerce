@@ -17,7 +17,9 @@ Admin users can log in to the admin panel to manage products, orders, and users.
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/600px-Tailwind_CSS_Logo.svg.png?20211001194333" width="100" /> 
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="100" />
 </p> 
-
+## Scarpping Data
+Scraping data from the Kendra Scott jewelry website involves using php tools to extract information such as product names, descriptions, prices, and images from the website's pages.
+Kendra Scott web site :  https://www.kendrascott.com/jewelry/
 # Project Important Pages
 ## HOME PAGE
 <img
